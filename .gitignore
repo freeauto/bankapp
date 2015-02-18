@@ -49,3 +49,4 @@ appsessions
 .pydevproject
 *.db
 .DS_Store
+venv
