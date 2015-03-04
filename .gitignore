@@ -50,3 +50,4 @@ appsessions
 *.db
 .DS_Store
 venv
+.idea

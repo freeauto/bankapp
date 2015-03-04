@@ -19,3 +19,7 @@ def form_view():
     if form.validate_on_submit():
         return "Thanks"
     return render_template('form.html', form=form)
+
+@app.route('/admin/')
+def admin_view():
+    return render_template('admin/admin.html')
