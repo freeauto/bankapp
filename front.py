@@ -23,3 +23,20 @@ def form_view():
 @app.route('/admin/')
 def admin_view():
     return render_template('admin/admin.html')
+
+@app.route('/admin/login/')
+def admin_login_view():
+    return render_template('admin/login.html')
+
+@app.route('/admin/flot/')
+def admin_flot_view():
+    return render_template('admin/flot.html')
+
+@app.route('/admin/morris/')
+def admin_morris_view():
+    return render_template('admin/morris.html')
+
+@app.route('/admin/tables/')
+def admin_tables_view():
+    return render_template('admin/tables.html')
+

@@ -38,18 +38,17 @@
 </head>
 <body>
 
-<div id="wrapper">
-  {% block content %}{% endblock %}
-</div>
-<!-- /#wrapper -->
+{% block content %}{% endblock %}
 
-<script src="/js/jquery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-<script src="/bower_components/raphael/raphael-min.js"></script>
-<script src="/bower_components/morrisjs/morris.min.js"></script>
-<script src="/js/morris-data.js"></script>
-<script src="/js/sb-admin-2.js"></script>
+{% block js %}
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+  {% block extra_js %}{% endblock %}
+
+  <script src="/js/sb-admin-2.js"></script>
+{% endblock %}
 
 </body>
 </html>
