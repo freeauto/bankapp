@@ -1,21 +1,40 @@
 import os
+import sys
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__,
+
+IS_PROD = os.environ.get('DYNO') != None
+
+app = Flask('FluidLending',
             static_folder='assets',
             static_url_path='',
             template_folder='assets')
 
 app.debug = os.environ.get('DYNO') is None
 app.secret_key = 'some random key hahahah'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlite.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] if IS_PROD else 'sqlite:///sqlite.db'
 
 db = SQLAlchemy(app)
 
-from front import * # load code @UnusedWildImport
+class User(db.Model):
+    key = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.Text)
+    last_name = db.Column(db.Text) 
+    email = db.Column(db.Text, unique=True)
 
+    def __repr__(self):
+        return '<User %r>' % self.email
+
+from front import * # @NoMove @UnusedWildImport
 
 if __name__ == '__main__':
-    app.run()
+    if len(sys.argv) <= 1:
+        app.run()
+    else:
+        if sys.argv[1] == 'shell':
+            import code
+            code.interact("\n>>> %s %s shell. Try dir()" % ('PRODUCTION' if IS_PROD else 'localdev', app.name), local=locals())
+        elif sys.argv[1] == 'db_init':
+            db.create_all()
