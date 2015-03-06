@@ -36,7 +36,7 @@ Ankh.NoLoad
 *.suo
 *.exp
 *.o
-#*.ini
+*.ini
 *.err
 *.out
 *.dat

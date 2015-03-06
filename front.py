@@ -7,7 +7,10 @@ import wtforms as wtf
 
 
 class SubscribeForm(Form):
+    first_name = wtf.StringField(label='First Name', validators=[DataRequired()])
+    last_name = wtf.StringField(label='Last Name', validators=[DataRequired()])
     email = wtf.StringField(label='Your Email', validators=[DataRequired()])
+    zip = wtf.StringField(lable='Zip Code', validators=[DataRequired()])
 
 @app.route('/')
 def home_view():
