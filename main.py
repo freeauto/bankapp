@@ -16,6 +16,10 @@ app.debug = os.environ.get('DYNO') is None
 app.secret_key = 'some random key hahahah'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] if IS_PROD else 'sqlite:///sqlite.db'
 
+if IS_PROD:
+    from flask_sslify import SSLify
+    SSLify(app)
+
 db = SQLAlchemy(app)
 
 class User(db.Model):
