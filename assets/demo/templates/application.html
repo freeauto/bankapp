@@ -1,0 +1,73 @@
+{% extends "/demo/templates/base.html" %}
+{% block content %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">FluidLending</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#loan">Loan</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#borrower">Borrower</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#financial">Financial</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Form Start -->
+    <form method="POST" action="">
+    
+        <!-- Loan Info Section -->
+        <section id="loan">
+            <div class="container">
+                <p>loan info</p>
+                <a href="#borrower" class="btn btn-info" role="button">Next</a>
+            </div>
+        </section>
+        
+        <!-- Borrower Info Section -->
+        <section class="success" id="borrower">
+            <div class="container">
+                <p>borrower info</p><a href="#financial" class="btn btn-info" role="button">Back</a>
+                {{ form.hidden_tag() }}
+                {{ form.first_name.label }} {{ form.first_name(size=20) }}
+                {{ form.last_name.label }} {{ form.last_name(size=20) }}
+                {{ form.phone.label }} {{ form.phone(size=20) }}
+                {{ form.email.label }} {{ form.email(size=80) }}
+                <a href="#loan" class="btn btn-info" role="button">Next</a>
+            </div>
+        </section>
+        
+        <!-- Financial Info Section -->
+        <section id="financial">
+            <div class="container">
+                <p>financial info</p><a href="#borrower" class="btn btn-info" role="button">Back</a>
+                <input class="btn btn-success" type="submit" value="Go">
+            </div>
+        </section>
+    
+    <!-- Form End -->
+    </form>
+{% endblock %}

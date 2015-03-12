@@ -18,19 +18,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] if IS_PROD el
 
 if IS_PROD:
     from flask_sslify import SSLify
-    SSLify(app)
+    SSLify(app)   
 
 db = SQLAlchemy(app)
 
-class User(db.Model):
-    key = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.Text)
-    last_name = db.Column(db.Text) 
-    email = db.Column(db.Text, unique=True)
-
-    def __repr__(self):
-        return '<User %r>' % self.email
-
+#======================= IMPORT MODULES ======================
+from models import *        
 from front import * # @NoMove @UnusedWildImport
 
 if __name__ == '__main__':
