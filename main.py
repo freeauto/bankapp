@@ -23,7 +23,6 @@ if IS_PROD:
 db = SQLAlchemy(app)
 
 #======================= IMPORT MODULES ======================
-from models import *        
 from front import * # @NoMove @UnusedWildImport
 
 if __name__ == '__main__':

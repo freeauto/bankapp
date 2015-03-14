@@ -46,3 +46,7 @@ footer .footer-below {
     padding: 25px 0;
     background-color: #299ddd;
 }
+
+section.darker {
+    background: #eeeeee;
+}
